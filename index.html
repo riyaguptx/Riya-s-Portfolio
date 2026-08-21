@@ -629,51 +629,72 @@
   }
 
   /* CONTACT */
-  .contact-section {
-    text-align: center;
-    padding: 6rem 4rem;
-  }
+ .contact-section {
+  text-align: center;
+  padding: 6rem 4rem;
+}
 
-  .contact-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-  }
+.contact-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
 
-  .contact-title span { color: var(--green); }
+.contact-title span {
+  color: var(--green);
+}
 
-  .contact-sub {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--mid);
-    margin-bottom: 3rem;
-    line-height: 1.7;
-  }
+.contact-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--white);
+  margin-bottom: 3rem;
+  line-height: 1.9;
+}
 
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
+.contact-sub-secondary {
+  color: var(--mid);
+  font-size: 0.78rem;
+}
 
-  .contact-link {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--white);
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--border-bright);
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+.contact-sub-tertiary {
+  color: var(--dim);
+  font-size: 0.72rem;
+}
 
-  .contact-link::before { content: '↗'; color: var(--green); }
-  .contact-link:hover { border-color: var(--green); color: var(--green); background: var(--green-glow); }
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-bright);
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-link::before {
+  content: '↗';
+  color: var(--green);
+}
+
+.contact-link:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: var(--green-glow);
+}
 
   /* FOOTER */
   footer {
@@ -752,7 +773,7 @@
     <p class="terminal-prompt">MBA Candidate · SDSU Information Systems · Dec 2026</p>
     <h1 class="hero-name">Riya<br><span class="highlight">Gupta</span></h1>
     <p class="hero-role">Business Analyst &amp; Data Professional</p>
-    <p class="hero-tagline">I build systems that fix real problems — not just reports that describe them. Two years of operational BA experience. ISO-certified manufacturing environment. OPT eligible, 3-year STEM authorization.</p>
+    <p class="hero-tagline">I build systems that fix real problems — not just reports that describe them. 2+ years turning messy data, broken processes, and complex business needs into solutions across analytics, enterprise systems, and operations.</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">Get in Touch</a>
       <a href="#projects" class="btn-outline">View Projects</a>
@@ -777,7 +798,7 @@
     </div>
     <div class="stat-card wide">
       <div>
-        <div class="stat-number">2yr</div>
+        <div class="stat-number">2+ years</div>
         <div class="stat-label">Real operational BA experience</div>
       </div>
       <div class="stack-pills">
@@ -922,7 +943,7 @@
   <div class="projects-grid">
 
     <div class="project-card fade-in">
-      <p class="project-index">01 · SDSU MIS 686 · Aug–Dec 2025</p>
+      <p class="project-index">01 · SDSU MIS 686 · Fall 2025</p>
       <h3 class="project-title">Enterprise Cybersecurity Analytics — SOC Database System</h3>
       <p class="project-desc">Designed and built a fully normalized 12-table relational database representing a real Security Operations Center. Deployed on AWS RDS with DDL/DML scripts, indexes, views, stored procedures, and triggers. Developed Python dashboards tracking MTTD, MTTC, MTTR, risk density, and escalation rates.</p>
       <div class="project-tools">
@@ -931,7 +952,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">02 · SDSU BA 674 · Apr 2026</p>
+      <p class="project-index">02 · SDSU BA 674 · Spring 2026</p>
       <h3 class="project-title">Cost of Capital &amp; Investment Analysis — Boeing 7E7</h3>
       <p class="project-desc">Calculated WACC using CAPM to evaluate Boeing's 7E7 aircraft program. Unlevered and relevered asset betas across the defense and commercial segments to isolate segment-specific risk, deriving an 11.1% cost of capital and a 12–14% risk-adjusted hurdle rate. Ran best-case/worst-case IRR sensitivity analysis and delivered a board-level approval recommendation with cost-control conditions.</p>
       <div class="project-tools">
@@ -940,7 +961,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">03 · SDSU BA 674 · Mar 2026</p>
+      <p class="project-index">03 · SDSU BA 674 · Spring 2026</p>
       <h3 class="project-title">Capital Budgeting &amp; DCF Analysis — Diamond Chemicals PLC</h3>
       <p class="project-desc">Critiqued and corrected a flawed discounted cash flow analysis for a plant modernization project. Identified adjustments for sunk costs, overhead allocation, opportunity cost of rolling stock, cannibalization of a sister plant, and inflation-consistent discount rates. Evaluated the investment against NPV, IRR (25.9%), payback period, and EPS impact criteria to support a funding recommendation.</p>
       <div class="project-tools">
@@ -949,7 +970,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">04 · SDSU · Managerial Accounting</p>
+      <p class="project-index">04 · SDSU BA 670 · Spring 2026</p>
       <h3 class="project-title">Master Budget &amp; Pro Forma Financial Statements</h3>
       <p class="project-desc">Built a complete quarterly master budget for a manufacturing company across 12 linked schedules — sales, production, direct materials, direct labor, overhead, and S&amp;A expense. Produced a budgeted income statement, cash budget with borrowing and repayment scheduling, and pro forma balance sheet, modeling inventory policy, credit collection timing, and financing needs.</p>
       <div class="project-tools">
@@ -958,7 +979,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">05 · SDSU · Jan–May 2025</p>
+      <p class="project-index">05 · SDSU BA 649 · Spring 2025</p>
       <h3 class="project-title">Personalized Diet Recommendation Models</h3>
       <p class="project-desc">Analyzed 1,000+ observation healthcare dataset using regression and classification techniques. Built Best Subset Selection, Ridge, and Lasso models to predict caloric intake. Developed KNN and LDA classification achieving 88%+ accuracy. Conducted EDA, feature engineering, and model diagnostics.</p>
       <div class="project-tools">
@@ -967,7 +988,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">06 · SDSU · Aug–Dec 2024</p>
+      <p class="project-index">06 · SDSU BA 644 · Fall 2024</p>
       <h3 class="project-title">Operations Strategy &amp; Global Supply Chain Analysis</h3>
       <p class="project-desc">Analyzed global supply chain strategies across Apple, Nike, Walmart, Tesla, Amazon, and Toyota. Applied SWOT, PEST, and order qualifier frameworks. Modeled VLC scenarios quantifying how retention rate changes drive long-term profitability.</p>
       <div class="project-tools">
@@ -976,7 +997,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">07 · SDSU · 2025</p>
+      <p class="project-index">07 · SDSU 640 · Spring 2025</p>
       <h3 class="project-title">Competitive &amp; Financial Analysis — Procter &amp; Gamble</h3>
       <p class="project-desc">Benchmarked 3 P&amp;G business segments against 5 global competitors. Analyzed market dynamics, customer behavior, and financial performance. Delivered investment-committee-style strategic presentation with prioritized recommendations to senior stakeholders.</p>
       <div class="project-tools">
@@ -985,7 +1006,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">08 · BBA Thesis · 2022</p>
+      <p class="project-index">08 · BBA Thesis · 2021 to 2022</p>
       <h3 class="project-title">Brand Loyalty Research — Nike, Adidas, New Balance</h3>
       <p class="project-desc">Applied surveys, social listening, and text mining to analyze marketing performance across three global consumer brands. Found authentic personalized content consistently outperformed traditional formats in brand recall and purchase intent.</p>
       <div class="project-tools">
@@ -1089,8 +1110,13 @@
 <section class="contact-section" id="contact">
   <p class="section-label" style="justify-content: center;">Contact</p>
   <h2 class="contact-title">Open to the<br><span>right opportunity.</span></h2>
-  <p class="contact-sub">MBA candidate graduating December 2026.<br>Available immediately for internships and co-ops.<br>OPT eligible — 3 years STEM work authorization · San Diego, CA</p>
-  <div class="contact-links">
+ <p class="contact-sub">
+  MBA Candidate in Information Systems · Graduating December 2026<br>
+  Seeking full-time opportunities beginning after graduation<br>
+  <span class="contact-sub-secondary">San Diego, CA · Open to Southern California & Remote</span><br>
+  <span class="contact-sub-tertiary">Eligible for up to 36 months of OPT/STEM OPT work authorization</span>
+</p>
+ <div class="contact-links">
     <a href="mailto:guptariya471@gmail.com" class="contact-link">guptariya471@gmail.com</a>
     <a href="https://linkedin.com/in/riyaguptx" target="_blank" class="contact-link">linkedin.com/in/riyaguptx</a>
     <a href="tel:6196758598" class="contact-link">(619) 675-8598</a>
