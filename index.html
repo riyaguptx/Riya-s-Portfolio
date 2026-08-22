@@ -1,635 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riya Gupta — Business Analyst &amp; Data Professional</title>
+
+<title>Riya Gupta — Business Analyst & Data Professional</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #080C10;
-    --bg2: #0D1117;
-    --bg3: #161B22;
-    --border: #21262D;
-    --border-bright: #30363D;
-    --green: #00FF88;
-    --green-dim: #00C968;
-    --green-glow: rgba(0, 255, 136, 0.15);
-    --blue: #58A6FF;
-    --purple: #BC8CFF;
-    --white: #E6EDF3;
-    --mid: #8B949E;
-    --dim: #484F58;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* GRID BACKGROUND */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  * { position: relative; z-index: 1; }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--green-dim); }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 4rem;
-    background: rgba(8, 12, 16, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.9rem;
-    color: var(--green);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
-
-  .nav-logo span { color: var(--mid); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--mid);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a::before { content: './'; color: var(--dim); }
-  .nav-links a:hover { color: var(--green); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    gap: 4rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .terminal-prompt {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--green);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .terminal-prompt::before {
-    content: '▶';
-    font-size: 0.6rem;
-    animation: blink 1.2s infinite;
-  }
-
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-  .hero-name {
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.0;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-name .highlight {
-    color: transparent;
-    -webkit-text-stroke: 1px var(--green);
-  }
-
-  .hero-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.9rem;
-    color: var(--green);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-tagline {
-    font-size: 1rem;
-    color: var(--mid);
-    max-width: 440px;
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--green);
-    color: var(--bg);
-    padding: 0.75rem 1.75rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--white);
-    box-shadow: 0 0 20px var(--green-glow);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--green);
-    padding: 0.75rem 1.75rem;
-    border: 1px solid var(--green);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
-  .btn-outline:hover {
-    background: var(--green-glow);
-    box-shadow: 0 0 20px var(--green-glow);
-  }
-
-  /* STAT CARDS */
-  .hero-right {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .stat-card {
-    background: var(--bg2);
-    padding: 2rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.2s;
-  }
-
-  .stat-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--green);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .stat-card:hover { background: var(--bg3); }
-  .stat-card:hover::after { opacity: 1; }
-
-  .stat-card.featured {
-    background: var(--bg3);
-  }
-  .stat-card.featured::after { opacity: 1; }
-
-  .stat-number {
-    font-family: 'Space Mono', monospace;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--green);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px var(--green-glow);
-  }
-
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--mid);
-    line-height: 1.4;
-  }
-
-  .stat-card.wide {
-    grid-column: span 2;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.5rem 2rem;
-  }
-
-  .stat-card.wide .stat-number { font-size: 1.8rem; }
-
-  .stack-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .stack-pill {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--border-bright);
-    color: var(--mid);
-    letter-spacing: 0.05em;
-  }
-
-  /* SECTIONS */
-  section { padding: 6rem 4rem; border-bottom: 1px solid var(--border); }
-
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--green);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--green);
-    opacity: 0.4;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 3rem;
-    letter-spacing: -0.02em;
-  }
-
-  /* IMPACT */
-  .impact-section {
-    background: var(--bg2);
-    padding: 6rem 4rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .impact-terminal {
-    background: var(--bg);
-    border: 1px solid var(--border-bright);
-    margin-top: 3rem;
-    overflow: hidden;
-  }
-
-  .terminal-bar {
-    background: var(--bg3);
-    padding: 0.6rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .terminal-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-
-  .terminal-dot.red { background: #FF5F57; }
-  .terminal-dot.yellow { background: #FEBC2E; }
-  .terminal-dot.green { background: #28C840; }
-
-  .terminal-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--mid);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .terminal-body {
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .terminal-line {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.82rem;
-    line-height: 1.8;
-    color: var(--mid);
-    margin-bottom: 0.5rem;
-  }
-
-  .terminal-line .cmd { color: var(--green); }
-  .terminal-line .val { color: var(--blue); }
-  .terminal-line .str { color: var(--purple); }
-  .terminal-line .num { color: #FF9500; }
-  .terminal-line .comment { color: var(--dim); }
-
-  .impact-metrics {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    border-left: 1px solid var(--border);
-    padding-left: 3rem;
-  }
-
-  .metric-row {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .metric-val {
-    font-family: 'Space Mono', monospace;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--green);
-    text-shadow: 0 0 20px var(--green-glow);
-    white-space: nowrap;
-  }
-
-  .metric-desc {
-    font-size: 0.85rem;
-    color: var(--mid);
-    line-height: 1.4;
-  }
-
-  /* EXPERIENCE */
-  .exp-card {
-    border: 1px solid var(--border);
-    background: var(--bg2);
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-    transition: border-color 0.2s;
-  }
-
-  .exp-card:hover { border-color: var(--green); }
-
-  .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .exp-company {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--green);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.3rem;
-  }
-
-  .exp-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--white);
-  }
-
-  .exp-date {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--dim);
-    border: 1px solid var(--border);
-    padding: 0.3rem 0.7rem;
-    white-space: nowrap;
-  }
-
-  .exp-desc {
-    color: var(--mid);
-    font-size: 0.92rem;
-    line-height: 1.75;
-    margin-bottom: 1.2rem;
-  }
-
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid var(--border-bright);
-    color: var(--mid);
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
-  .tag:hover { border-color: var(--green); color: var(--green); }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .project-card {
-    background: var(--bg2);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--green), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .project-card:hover { background: var(--bg3); }
-  .project-card:hover::before { opacity: 1; }
-
-  .project-index {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--dim);
-    letter-spacing: 0.1em;
-  }
-
-  .project-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    font-size: 0.85rem;
-    color: var(--mid);
-    line-height: 1.65;
-    flex: 1;
-  }
-
-  .project-tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.5rem;
-  }
-
-  .tool-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    padding: 0.15rem 0.45rem;
-    background: var(--bg3);
-    border: 1px solid var(--border-bright);
-    color: var(--dim);
-    letter-spacing: 0.03em;
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .skill-group {
-    background: var(--bg2);
-    padding: 1.75rem;
-    transition: background 0.2s;
-  }
-
-  .skill-group:hover { background: var(--bg3); }
-
-  .skill-group-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--green);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border-bright);
-  }
-
-  .skill-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-
-  .skill-list li {
-    font-size: 0.85rem;
-    color: var(--mid);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    transition: color 0.15s;
-  }
-
-  .skill-list li:hover { color: var(--white); }
-
-  .skill-list li::before {
-    content: '›';
-    color: var(--green);
-    font-size: 1rem;
-    line-height: 1;
-  }
-
-  /* CERT STRIP */
-  .cert-strip {
-    background: var(--bg3);
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .cert-inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .cert-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--green);
-    letter-spacing: 0.1em;
-    margin-right: 0.5rem;
-  }
-
-  .cert-badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--border-bright);
-    color: var(--mid);
-    background: var(--bg2);
-    letter-spacing: 0.03em;
-  }
-
-  /* CONTACT */
- .contact-section {
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #080C10;
+  --bg2: #0D1117;
+  --bg3: #161B22;
+  --border: #21262D;
+  --border-bright: #30363D;
+  --green: #00FF88;
+  --green-dim: #00C968;
+  --green-glow: rgba(0, 255, 136, 0.15);
+  --blue: #58A6FF;
+  --purple: #BC8CFF;
+  --white: #E6EDF3;
+  --mid: #8B949E;
+  --dim: #484F58;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* GRID BACKGROUND */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+* {
+  position: relative;
+  z-index: 1;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-dim);
+}
+
+/* NAV */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background: rgba(8, 12, 16, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.nav-logo span {
+  color: var(--mid);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.45rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: 0.07em;
+  transition: color 0.2s;
+}
+
+.nav-links a::before {
+  content: './';
+  color: var(--dim);
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  gap: 4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-prompt {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-prompt::before {
+  content: '▶';
+  font-size: 0.6rem;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-name {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-name .highlight {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--green);
+}
+
+.hero-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--mid);
+  max-width: 470px;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 0.75rem 1.75rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--bg);
+  border: 1px solid var(--green);
+}
+
+.btn-primary:hover {
+  background: var(--white);
+  border-color: var(--white);
+  box-shadow: 0 0 20px var(--green-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.btn-outline:hover {
+  background: var(--green-glow);
+  box-shadow: 0 0 20px var(--green-glow);
+}
+
+/* STAT CARDS */
+
+.hero-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.stat-card {
+  background: var(--bg2);
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.stat-card:hover {
+  background: var(--bg3);
+}
+
+.stat-card:hover::after,
+.stat-card.featured::after {
+  opacity: 1;
+}
+
+.stat-card.featured {
+  background: var(--bg3);
+}
+
+.stat-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px var(--green-glow);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+.stat-card.wide {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.stat-card.wide .stat-number {
+  font-size: 1.7rem;
+}
+
+.stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stack-pill {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border-bright);
+  color: var(--mid);
+  letter-spacing: 0.05em;
+}
+
+/* GENERAL SECTIONS */
+
+section {
+  padding: 6rem 4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--green);
+  opacity: 0.4;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+
+.section-intro {
+  color: var(--mid);
+  max-width: 720px;
+  font-size: 0.95rem;
+  margin-top: -1.8rem;
+  margin-bottom: 3rem;
+  line-height: 1.75;
+}
+
+/* IMPACT */
+
+.impact-section {
+  background: var(--bg2);
+}
+
+.impact-terminal {
+  background: var(--bg);
+  border: 1px solid var(--border-bright);
+  margin-top: 3rem;
+  overflow: hidden;
+}
+
+.terminal-bar {
+  background: var(--bg3);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #FF5F57; }
+.terminal-dot.yellow { background: #FEBC2E; }
+.terminal-dot.green { background: #28C840; }
+
+.terminal-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--mid);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminal-body {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.terminal-line {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--mid);
+  margin-bottom: 0.5rem;
+}
+
+.terminal-line .cmd { color: var(--green); }
+.terminal-line .str { color: var(--purple); }
+.terminal-line .num { color: #FF9500; }
+.terminal-line .comment { color: var(--dim); }
+
+.impact-metrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  border-left: 1px solid var(--border);
+  padding-left: 3rem;
+}
+
+.metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.metric-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green);
+  text-shadow: 0 0 20px var(--green-glow);
+  white-space: nowrap;
+}
+
+.metric-desc {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+/* EXPERIENCE */
+
+.exp-card {
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.exp-card:hover {
+  border-color: var(--green);
+  background: var(--bg3);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-company {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.exp-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.exp-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  white-space: nowrap;
+}
+
+.exp-desc {
+  color: var(--mid);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-bright);
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* EDUCATION */
+
+.education-section {
+  background: var(--bg);
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.education-card {
+  background: var(--bg2);
+  padding: 2.5rem;
+  transition: background 0.2s;
+}
+
+.education-card:hover {
+  background: var(--bg3);
+}
+
+.education-status {
+  font-family: 'Space Mono', monospace;
+  color: var(--green);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.education-degree {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: 0.7rem;
+}
+
+.education-school {
+  color: var(--mid);
+  font-size: 0.92rem;
+  margin-bottom: 1.2rem;
+}
+
+.education-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--dim);
+  line-height: 1.9;
+}
+
+.education-courses {
+  margin-top: 1.3rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  color: var(--mid);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+/* FEATURED PROJECTS */
+
+.projects-section {
+  background: var(--bg2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.project-card {
+  background: var(--bg2);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: background 0.2s;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.project-card:hover {
+  background: var(--bg3);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-index {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+
+.project-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.35;
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.tool-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.61rem;
+  padding: 0.16rem 0.45rem;
+  background: var(--bg3);
+  border: 1px solid var(--border-bright);
+  color: var(--dim);
+  letter-spacing: 0.03em;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.project-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.67rem;
+  color: var(--green);
+  text-decoration: none;
+  border: 1px solid var(--border-bright);
+  padding: 0.48rem 0.75rem;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.project-link::before {
+  content: '↗ ';
+}
+
+.project-link:hover {
+  border-color: var(--green);
+  background: var(--green-glow);
+  box-shadow: 0 0 16px var(--green-glow);
+}
+
+/* ADDITIONAL PROJECTS */
+
+.additional-heading {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4rem;
+  margin-bottom: 1.2rem;
+}
+
+.additional-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.additional-card {
+  background: var(--bg);
+  padding: 1.6rem;
+  transition: background 0.2s;
+}
+
+.additional-card:hover {
+  background: var(--bg3);
+}
+
+.additional-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.61rem;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.55rem;
+}
+
+.additional-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  color: var(--white);
+}
+
+.additional-desc {
+  font-size: 0.8rem;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* CERTIFICATIONS */
+
+.cert-strip {
+  background: var(--bg3);
+  padding: 2rem 4rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cert-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cert-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  margin-right: 0.5rem;
+}
+
+.cert-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border-bright);
+  color: var(--mid);
+  background: var(--bg2);
+  letter-spacing: 0.03em;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.skill-group {
+  background: var(--bg2);
+  padding: 1.75rem;
+  transition: background 0.2s;
+}
+
+.skill-group:hover {
+  background: var(--bg3);
+}
+
+.skill-group-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-bright);
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.skill-list li {
+  font-size: 0.85rem;
+  color: var(--mid);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.15s;
+}
+
+.skill-list li:hover {
+  color: var(--white);
+}
+
+.skill-list li::before {
+  content: '›';
+  color: var(--green);
+  font-size: 1rem;
+}
+
+/* CONTACT */
+
+.contact-section {
   text-align: center;
   padding: 6rem 4rem;
 }
@@ -696,446 +922,1230 @@
   background: var(--green-glow);
 }
 
-  /* FOOTER */
-  footer {
-    padding: 1.5rem 4rem;
+/* FOOTER */
+
+footer {
+  padding: 1.5rem 4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+}
+
+footer .status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--green);
+}
+
+footer .status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ANIMATIONS */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 0.9rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 4rem;
+  }
+
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  .terminal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-metrics {
+    border-left: none;
     border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-left: 0;
+    padding-top: 2rem;
   }
 
-  footer p {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--dim);
-    letter-spacing: 0.05em;
+  .education-grid,
+  .projects-grid,
+  .additional-grid {
+    grid-template-columns: 1fr;
   }
 
-  footer .status {
-    display: flex;
-    align-items: center;
+  .cert-strip {
+    padding: 2rem 1.5rem;
+  }
+
+  footer {
+    padding: 1.5rem;
+    flex-direction: column;
     gap: 0.5rem;
-    color: var(--green);
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .nav-links {
+    display: none;
   }
 
-  footer .status::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s infinite;
+  .hero-right {
+    grid-template-columns: 1fr 1fr;
   }
 
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-  /* ANIMATIONS */
-  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; }
-    section { padding: 4rem 1.5rem; }
-    .impact-section { padding: 4rem 1.5rem; }
-    .terminal-body { grid-template-columns: 1fr; }
-    .impact-metrics { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; }
-    .cert-strip { padding: 2rem 1.5rem; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  .stat-card.wide {
+    flex-direction: column;
+    align-items: flex-start;
   }
+}
 
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
-    .hero-right { grid-template-columns: 1fr 1fr; }
-  }
 </style>
+
 </head>
+
 <body>
 
 <!-- NAV -->
+
 <nav>
-  <a href="#" class="nav-logo">riya<span>@portfolio</span>:~$</a>
+
+  <a href="#" class="nav-logo">
+    riya<span>@portfolio</span>:~$
+  </a>
+
   <ul class="nav-links">
     <li><a href="#impact">impact</a></li>
     <li><a href="#experience">experience</a></li>
+    <li><a href="#education">education</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
+
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
+
   <div class="hero-left">
-    <p class="terminal-prompt">MBA Candidate · SDSU Information Systems · Dec 2026</p>
-    <h1 class="hero-name">Riya<br><span class="highlight">Gupta</span></h1>
-    <p class="hero-role">Business Analyst &amp; Data Professional</p>
-    <p class="hero-tagline">I build systems that fix real problems — not just reports that describe them. 2+ years turning messy data, broken processes, and complex business needs into solutions across analytics, enterprise systems, and operations.</p>
+
+    <p class="terminal-prompt">
+      MBA Candidate · SDSU Information Systems · Dec 2026
+    </p>
+
+    <h1 class="hero-name">
+      Riya<br>
+      <span class="highlight">Gupta</span>
+    </h1>
+
+    <p class="hero-role">
+      Business Analyst & Data Professional
+    </p>
+
+    <p class="hero-tagline">
+      I build systems that fix real problems — not just reports that describe them.
+      2+ years turning messy data, broken processes, and complex business needs into
+      solutions across analytics, enterprise systems, and operations.
+    </p>
+
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">Get in Touch</a>
       <a href="#projects" class="btn-outline">View Projects</a>
     </div>
+
   </div>
+
   <div class="hero-right">
+
     <div class="stat-card featured">
       <div class="stat-number">$24K</div>
-      <div class="stat-label">Recovered at ARS Industries in 4 months</div>
+      <div class="stat-label">
+        Recovered at ARS Industries in 4 months
+      </div>
     </div>
+
     <div class="stat-card">
       <div class="stat-number">80%</div>
-      <div class="stat-label">Material waste reduction via automation</div>
+      <div class="stat-label">
+        Material waste reduction via automation
+      </div>
     </div>
+
     <div class="stat-card">
       <div class="stat-number">88%+</div>
-      <div class="stat-label">ML model accuracy on healthcare data</div>
+      <div class="stat-label">
+        Predictive model accuracy on healthcare data
+      </div>
     </div>
+
     <div class="stat-card">
       <div class="stat-number">40%</div>
-      <div class="stat-label">Campaign engagement lift via A/B testing</div>
+      <div class="stat-label">
+        Campaign engagement lift via A/B testing
+      </div>
     </div>
+
     <div class="stat-card wide">
+
       <div>
         <div class="stat-number">2+ years</div>
-        <div class="stat-label">Real operational BA experience</div>
+        <div class="stat-label">
+          Operational business analysis experience
+        </div>
       </div>
+
       <div class="stack-pills">
         <span class="stack-pill">SQL</span>
         <span class="stack-pill">Python</span>
         <span class="stack-pill">Power BI</span>
+        <span class="stack-pill">Tableau</span>
         <span class="stack-pill">R</span>
         <span class="stack-pill">AWS RDS</span>
         <span class="stack-pill">ERP</span>
-        <span class="stack-pill">MES</span>
-        <span class="stack-pill">ISO 9001</span>
+        <span class="stack-pill">Jira</span>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 <!-- IMPACT -->
+
 <section class="impact-section" id="impact">
+
   <p class="section-label">Signature Work</p>
-  <h2 class="section-title">The problem nobody had mapped.</h2>
+
+  <h2 class="section-title">
+    The problem nobody had mapped.
+  </h2>
+
   <div class="impact-terminal fade-in">
+
     <div class="terminal-bar">
+
       <div class="terminal-dot red"></div>
       <div class="terminal-dot yellow"></div>
       <div class="terminal-dot green"></div>
-      <span class="terminal-title">ars_industries_case_study.py</span>
+
+      <span class="terminal-title">
+        ars_industries_case_study.py
+      </span>
+
     </div>
+
     <div class="terminal-body">
+
       <div>
-        <div class="terminal-line"><span class="comment"># Problem identified at ARS Industries</span></div>
-        <div class="terminal-line"><span class="comment"># ISO 9001:2015 certified precision manufacturer</span></div>
+
+        <div class="terminal-line">
+          <span class="comment">
+            # Operational problem identified at ARS Industries
+          </span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="comment">
+            # ISO 9001:2015 precision manufacturing environment
+          </span>
+        </div>
+
         <br>
-        <div class="terminal-line"><span class="cmd">annual_loss</span> = <span class="num">30000</span> <span class="comment"># USD</span></div>
-        <div class="terminal-line"><span class="cmd">error_rate</span> = <span class="num">0.12</span> <span class="comment"># 12% data entry error</span></div>
-        <div class="terminal-line"><span class="cmd">root_cause</span> = <span class="str">"manual CAD→Excel re-entry"</span></div>
+
+        <div class="terminal-line">
+          <span class="cmd">annual_loss</span> =
+          <span class="num">30000</span>
+          <span class="comment"># USD</span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="cmd">error_rate</span> =
+          <span class="num">0.12</span>
+          <span class="comment"># operational data-entry error</span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="cmd">root_cause</span> =
+          <span class="str">"manual data re-entry"</span>
+        </div>
+
         <br>
-        <div class="terminal-line"><span class="comment"># My solution</span></div>
-        <div class="terminal-line"><span class="cmd">tool_1</span> = <span class="str">"Excel macro — auto-extract CAD dims"</span></div>
-        <div class="terminal-line"><span class="cmd">tool_2</span> = <span class="str">"Power BI — real-time scrap dashboard"</span></div>
+
+        <div class="terminal-line">
+          <span class="comment">
+            # Solution
+          </span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="cmd">automation</span> =
+          <span class="str">"Excel validation + workflow automation"</span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="cmd">reporting</span> =
+          <span class="str">"Power BI operational visibility"</span>
+        </div>
+
         <br>
-        <div class="terminal-line"><span class="cmd">result</span> = waste_reduction(<span class="num">0.80</span>)</div>
-        <div class="terminal-line"><span class="cmd">recovered</span> = <span class="num">24000</span> <span class="comment"># USD in 4 months</span></div>
-        <div class="terminal-line"><span class="cmd">outcome</span> = <span class="str">"permanent offer from Plant Manager"</span></div>
+
+        <div class="terminal-line">
+          <span class="cmd">waste_reduction</span> =
+          <span class="num">0.80</span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="cmd">recovered</span> =
+          <span class="num">24000</span>
+          <span class="comment"># USD</span>
+        </div>
+
       </div>
+
       <div class="impact-metrics">
+
         <div class="metric-row">
           <div class="metric-val">80%</div>
-          <div class="metric-desc">waste reduction<br>after deployment</div>
+          <div class="metric-desc">
+            reduction in<br>identified waste
+          </div>
         </div>
+
         <div class="metric-row">
           <div class="metric-val">$24K</div>
-          <div class="metric-desc">recovered in first<br>four months</div>
+          <div class="metric-desc">
+            value recovered<br>within four months
+          </div>
         </div>
+
         <div class="metric-row">
           <div class="metric-val">12%</div>
-          <div class="metric-desc">error rate traced<br>and eliminated</div>
+          <div class="metric-desc">
+            operational error<br>rate identified
+          </div>
         </div>
-        <div class="metric-row">
-          <div class="metric-val">↑</div>
-          <div class="metric-desc">permanent position<br>offered as result</div>
-        </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 <!-- EXPERIENCE -->
+
 <section id="experience">
+
   <p class="section-label">Experience</p>
-  <h2 class="section-title">Where I've made an impact.</h2>
+
+  <h2 class="section-title">
+    Where I've made an impact.
+  </h2>
+
+  <!-- AZTEC SHOPS -->
 
   <div class="exp-card fade-in">
-   <div class="exp-header">
-     <div>
-       <p class="exp-company">Aztec Shops Ltd. · San Diego, CA</p>
-       <h3 class="exp-title">MBA Consultant</h3>
-     </div>
-     <span class="exp-date">Aug 2026 – Dec 2026</span>
-   </div>
-   <p class="exp-desc">
-     Selected for a semester-long MBA consulting engagement with Aztec Shops, the $150M auxiliary organization supporting San Diego State University. Conducting stakeholder interviews, benchmarking peer organizations, analyzing current-state operations, and developing strategic recommendations and implementation roadmaps for senior leadership.
-   </p>
-   <div class="tag-row">
-     <span class="tag">Strategic Consulting</span>
-     <span class="tag">Stakeholder Interviews</span>
-     <span class="tag">Benchmarking</span>
-     <span class="tag">Process Analysis</span>
-     <span class="tag">Business Case Development</span>
-     <span class="tag">Implementation Roadmaps</span>
-     <span class="tag">Executive Recommendations</span>
-   </div>
- </div>
- 
- <div class="exp-card fade-in">
-   <div class="exp-header">
-     <div>
-       <p class="exp-company">ARS Industries · Vadodara, India · arsindustries.co.in</p>
-       <h3 class="exp-title">Business Analyst</h3>
-     </div>
-     <span class="exp-date">Sep 2021 – Oct 2023</span>
-   </div>
-   <p class="exp-desc">Embedded BA at an ISO 9001:2015 certified precision components manufacturer. Primary liaison between production, supply chain, finance, and IT. Built and automated dashboards tracking 15+ KPIs. Supported ERP, MRP, and MES system integrations. Mapped As-Is and To-Be workflows. Managed purchase order and vendor coordination, including invoice reconciliation. Supported finance reporting with financial statement preparation and budget-to-actual variance tracking. Delivered the $24K recovery project that resulted in a permanent offer.</p>
-   <div class="tag-row">
-     <span class="tag">ISO 9001:2015</span>
-     <span class="tag">ERP · MRP · MES</span>
-     <span class="tag">Power BI</span>
-     <span class="tag">Excel Macros</span>
-     <span class="tag">SQL</span>
-     <span class="tag">Process Mapping</span>
-     <span class="tag">UAT</span>
-     <span class="tag">Variance Analysis</span>
-     <span class="tag">Requirements Gathering</span>
-     <span class="tag">Invoice Reconciliation</span>
-    </div>
-  </div>
 
-  <div class="exp-card fade-in">
     <div class="exp-header">
+
       <div>
-        <p class="exp-company">Unschool · E-Learning Platform</p>
-        <h3 class="exp-title">Product Marketing Intern</h3>
+        <p class="exp-company">
+          Aztec Shops Ltd. · San Diego, CA
+        </p>
+
+        <h3 class="exp-title">
+          MBA Consultant
+        </h3>
       </div>
-      <span class="exp-date">May 2021 – Jul 2021</span>
+
+      <span class="exp-date">
+        Aug 2026 – Dec 2026
+      </span>
+
     </div>
-    <p class="exp-desc">Executed multi-channel advertising campaigns across Facebook ads, email marketing, and WhatsApp outreach to drive user acquisition and product sales. Conducted business development outreach to educational content brands and e-learning partners, managing relationships from first contact through ongoing collaboration. Designed and ran A/B tests on ad copy, messaging angles, and activation flows. Tracked CTR, open rates, and conversion data daily. Drove a 40% improvement in campaign engagement through rapid data-informed iteration.</p>
+
+    <p class="exp-desc">
+      Selected for a semester-long MBA consulting engagement with Aztec Shops,
+      the $150M auxiliary organization supporting San Diego State University.
+      Conducting stakeholder interviews, benchmarking peer organizations,
+      analyzing current-state operations, and developing strategic recommendations
+      and implementation roadmaps for senior leadership.
+    </p>
+
     <div class="tag-row">
-      <span class="tag">Facebook Ads</span>
-      <span class="tag">Email Marketing</span>
-      <span class="tag">WhatsApp Outreach</span>
-      <span class="tag">A/B Testing</span>
-      <span class="tag">CTR Optimization</span>
-      <span class="tag">Business Development</span>
-      <span class="tag">Campaign Analytics</span>
+      <span class="tag">Strategic Consulting</span>
+      <span class="tag">Stakeholder Interviews</span>
+      <span class="tag">Benchmarking</span>
+      <span class="tag">Process Analysis</span>
+      <span class="tag">Business Case Development</span>
+      <span class="tag">Implementation Roadmaps</span>
+      <span class="tag">Executive Recommendations</span>
     </div>
+
   </div>
+
+  <!-- ARS -->
+
+  <div class="exp-card fade-in">
+
+    <div class="exp-header">
+
+      <div>
+        <p class="exp-company">
+          ARS Industries · Vadodara, India
+        </p>
+
+        <h3 class="exp-title">
+          Business Analyst
+        </h3>
+      </div>
+
+      <span class="exp-date">
+        Sep 2021 – Oct 2023
+      </span>
+
+    </div>
+
+    <p class="exp-desc">
+      Business Analyst in an ISO 9001:2015-certified precision manufacturing
+      environment, supporting business and technical processes across production,
+      supply chain, finance, and IT. Worked across ERP, MRP, and MES systems,
+      requirements analysis, process mapping, reporting, data validation, root
+      cause analysis, UAT, and continuous improvement. Delivered an automated
+      solution that reduced identified waste by 80% and recovered $24,000.
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">ISO 9001:2015</span>
+      <span class="tag">ERP · MRP · MES</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Excel</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Process Mapping</span>
+      <span class="tag">UAT</span>
+      <span class="tag">Root Cause Analysis</span>
+      <span class="tag">Requirements Analysis</span>
+    </div>
+
+  </div>
+
+  <!-- UNSCHOOL -->
+
+  <div class="exp-card fade-in">
+
+    <div class="exp-header">
+
+      <div>
+        <p class="exp-company">
+          Unschool · E-Learning Platform
+        </p>
+
+        <h3 class="exp-title">
+          Product Marketing Intern
+        </h3>
+      </div>
+
+      <span class="exp-date">
+        May 2021 – Jul 2021
+      </span>
+
+    </div>
+
+    <p class="exp-desc">
+      Analyzed multi-channel digital marketing performance across advertising,
+      email, and other digital channels. Conducted A/B testing, evaluated user
+      engagement and campaign metrics, and translated findings into optimization
+      recommendations that improved audience engagement by 40%.
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">Digital Marketing</span>
+      <span class="tag">A/B Testing</span>
+      <span class="tag">Campaign Analytics</span>
+      <span class="tag">Audience Engagement</span>
+      <span class="tag">Performance Analysis</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education" class="education-section">
+
+  <p class="section-label">Education</p>
+
+  <h2 class="section-title">
+    Business thinking. Technical depth.
+  </h2>
+
+  <div class="education-grid">
+
+    <!-- SDSU -->
+
+    <div class="education-card fade-in">
+
+      <p class="education-status">
+        Graduate · In Progress
+      </p>
+
+      <h3 class="education-degree">
+        Master of Business Administration<br>
+        Information Systems
+      </h3>
+
+      <p class="education-school">
+        Fowler College of Business<br>
+        San Diego State University
+      </p>
+
+      <div class="education-meta">
+        San Diego, California<br>
+        Aug 2024 – Dec 2026
+      </div>
+
+      <p class="education-courses">
+        Business Analytics · Statistical Analysis · Enterprise Database Management ·
+        Programming Data-Driven Applications · Financial Reporting & Analysis ·
+        Operations Strategy · Managerial Marketing
+      </p>
+
+    </div>
+
+    <!-- NUV -->
+
+    <div class="education-card fade-in">
+
+      <p class="education-status">
+        Undergraduate
+      </p>
+
+      <h3 class="education-degree">
+        Bachelor of Business Administration<br>
+        Management & Operations
+      </h3>
+
+      <p class="education-school">
+        School of Business and Law<br>
+        Navrachana University
+      </p>
+
+      <div class="education-meta">
+        Gujarat, India<br>
+        May 2019 – Dec 2022
+      </div>
+
+      <p class="education-courses">
+        Management · Operations · Marketing · Finance ·
+        Research Methods · Consumer Behavior · Business Strategy
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background: var(--bg2);">
-  <p class="section-label">Projects</p>
-  <h2 class="section-title">Built. Deployed. Measured.</h2>
+
+<section id="projects" class="projects-section">
+
+  <p class="section-label">Featured Projects</p>
+
+  <h2 class="section-title">
+    Built. Analyzed. Proven.
+  </h2>
+
+  <p class="section-intro">
+    Selected analytical, technical, financial, and product strategy work.
+    Each project below links to supporting work, presentations, models, or code.
+  </p>
+
   <div class="projects-grid">
 
-    <div class="project-card fade-in">
-      <p class="project-index">01 · SDSU MIS 686 · Fall 2025</p>
-      <h3 class="project-title">Enterprise Cybersecurity Analytics — SOC Database System</h3>
-      <p class="project-desc">Designed and built a fully normalized 12-table relational database representing a real Security Operations Center. Deployed on AWS RDS with DDL/DML scripts, indexes, views, stored procedures, and triggers. Developed Python dashboards tracking MTTD, MTTC, MTTR, risk density, and escalation rates.</p>
-      <div class="project-tools">
-        <span class="tool-tag">MySQL</span><span class="tool-tag">SQL</span><span class="tool-tag">AWS RDS</span><span class="tool-tag">Python</span><span class="tool-tag">Pandas</span><span class="tool-tag">Matplotlib</span><span class="tool-tag">SQLAlchemy</span><span class="tool-tag">Tableau</span>
-      </div>
-    </div>
+    <!-- 01 MIS 686 -->
 
     <div class="project-card fade-in">
-      <p class="project-index">02 · SDSU BA 674 · Spring 2026</p>
-      <h3 class="project-title">Cost of Capital &amp; Investment Analysis — Boeing 7E7</h3>
-      <p class="project-desc">Calculated WACC using CAPM to evaluate Boeing's 7E7 aircraft program. Unlevered and relevered asset betas across the defense and commercial segments to isolate segment-specific risk, deriving an 11.1% cost of capital and a 12–14% risk-adjusted hurdle rate. Ran best-case/worst-case IRR sensitivity analysis and delivered a board-level approval recommendation with cost-control conditions.</p>
+
+      <p class="project-index">
+        01 · SDSU MIS 686 · Fall 2025
+      </p>
+
+      <h3 class="project-title">
+        Enterprise Cybersecurity Analytics — SOC Database System
+      </h3>
+
+      <p class="project-desc">
+        Designed and built a normalized 12-table relational database representing
+        a Security Operations Center. Deployed the database on AWS RDS and used
+        advanced SQL, Python, and visualization tools to analyze incident performance,
+        including detection and resolution metrics.
+      </p>
+
       <div class="project-tools">
-        <span class="tool-tag">WACC</span><span class="tool-tag">CAPM</span><span class="tool-tag">Asset Beta</span><span class="tool-tag">IRR</span><span class="tool-tag">Sensitivity Analysis</span><span class="tool-tag">Excel</span>
+        <span class="tool-tag">SQL</span>
+        <span class="tool-tag">MySQL</span>
+        <span class="tool-tag">AWS RDS</span>
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Pandas</span>
+        <span class="tool-tag">Tableau</span>
+        <span class="tool-tag">Data Modeling</span>
       </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/drive/folders/1hNmgbBli7hc7aWOBmh5PFGqC8pajr5nM?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Technical Project
+        </a>
+      </div>
+
     </div>
 
-    <div class="project-card fade-in">
-      <p class="project-index">03 · SDSU BA 674 · Spring 2026</p>
-      <h3 class="project-title">Capital Budgeting &amp; DCF Analysis — Diamond Chemicals PLC</h3>
-      <p class="project-desc">Critiqued and corrected a flawed discounted cash flow analysis for a plant modernization project. Identified adjustments for sunk costs, overhead allocation, opportunity cost of rolling stock, cannibalization of a sister plant, and inflation-consistent discount rates. Evaluated the investment against NPV, IRR (25.9%), payback period, and EPS impact criteria to support a funding recommendation.</p>
-      <div class="project-tools">
-        <span class="tool-tag">DCF</span><span class="tool-tag">NPV</span><span class="tool-tag">IRR</span><span class="tool-tag">Payback Period</span><span class="tool-tag">Opportunity Cost</span><span class="tool-tag">Capital Budgeting</span>
-      </div>
-    </div>
+    <!-- 02 REFLEKT -->
 
     <div class="project-card fade-in">
-      <p class="project-index">04 · SDSU BA 670 · Spring 2026</p>
-      <h3 class="project-title">Master Budget &amp; Pro Forma Financial Statements</h3>
-      <p class="project-desc">Built a complete quarterly master budget for a manufacturing company across 12 linked schedules — sales, production, direct materials, direct labor, overhead, and S&amp;A expense. Produced a budgeted income statement, cash budget with borrowing and repayment scheduling, and pro forma balance sheet, modeling inventory policy, credit collection timing, and financing needs.</p>
+
+      <p class="project-index">
+        02 · SDSU BA 672 · Fall 2025
+      </p>
+
+      <h3 class="project-title">
+        Product Strategy & Go-to-Market Development — Reflekt
+      </h3>
+
+      <p class="project-desc">
+        Co-developed Reflekt, a sustainable blue-light eyewear product concept,
+        and built its go-to-market strategy for the California market. Conducted
+        PESTEL, SWOT, competitive and customer analyses; defined target segments,
+        positioning, pricing, distribution, and promotional strategy; and developed
+        measurable growth objectives.
+      </p>
+
       <div class="project-tools">
-        <span class="tool-tag">Master Budget</span><span class="tool-tag">Cash Flow Forecasting</span><span class="tool-tag">Pro Forma Statements</span><span class="tool-tag">Cost Accounting</span><span class="tool-tag">Excel Modeling</span>
+        <span class="tool-tag">Product Strategy</span>
+        <span class="tool-tag">GTM Strategy</span>
+        <span class="tool-tag">Market Research</span>
+        <span class="tool-tag">PESTEL</span>
+        <span class="tool-tag">SWOT</span>
+        <span class="tool-tag">Segmentation</span>
+        <span class="tool-tag">Positioning</span>
       </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/file/d/1Xp9XoGCIaQIjp0Q7kwjObIEhO7DH0AC8/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Product Strategy
+        </a>
+      </div>
+
     </div>
 
-    <div class="project-card fade-in">
-      <p class="project-index">05 · SDSU BA 649 · Spring 2025</p>
-      <h3 class="project-title">Personalized Diet Recommendation Models</h3>
-      <p class="project-desc">Analyzed 1,000+ observation healthcare dataset using regression and classification techniques. Built Best Subset Selection, Ridge, and Lasso models to predict caloric intake. Developed KNN and LDA classification achieving 88%+ accuracy. Conducted EDA, feature engineering, and model diagnostics.</p>
-      <div class="project-tools">
-        <span class="tool-tag">R</span><span class="tool-tag">R Studio</span><span class="tool-tag">Ridge Regression</span><span class="tool-tag">Lasso</span><span class="tool-tag">KNN</span><span class="tool-tag">LDA</span><span class="tool-tag">NumPy</span>
-      </div>
-    </div>
+    <!-- 03 MIS 515 -->
 
     <div class="project-card fade-in">
-      <p class="project-index">06 · SDSU BA 644 · Fall 2024</p>
-      <h3 class="project-title">Operations Strategy &amp; Global Supply Chain Analysis</h3>
-      <p class="project-desc">Analyzed global supply chain strategies across Apple, Nike, Walmart, Tesla, Amazon, and Toyota. Applied SWOT, PEST, and order qualifier frameworks. Modeled VLC scenarios quantifying how retention rate changes drive long-term profitability.</p>
+
+      <p class="project-index">
+        03 · SDSU MIS 515 · Spring 2026
+      </p>
+
+      <h3 class="project-title">
+        Demographic Analytics Application — Mental Health & Well-Being
+      </h3>
+
+      <p class="project-desc">
+        Co-developed a Python analytics application that collects user demographics
+        and questionnaire responses, validates and transforms inputs, processes
+        public datasets with Pandas, and generates personalized comparisons against
+        demographic peer groups.
+      </p>
+
       <div class="project-tools">
-        <span class="tool-tag">SWOT</span><span class="tool-tag">PEST</span><span class="tool-tag">VLC Modeling</span><span class="tool-tag">Competitive Analysis</span><span class="tool-tag">Strategic Frameworks</span>
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Pandas</span>
+        <span class="tool-tag">CSV Processing</span>
+        <span class="tool-tag">Input Validation</span>
+        <span class="tool-tag">Data Transformation</span>
+        <span class="tool-tag">Application Logic</span>
       </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/file/d/1XKsvQdAKZDyMsd-Izk_miUNHULhnD9I-/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Python Project
+        </a>
+      </div>
+
     </div>
 
-    <div class="project-card fade-in">
-      <p class="project-index">07 · SDSU 640 · Spring 2025</p>
-      <h3 class="project-title">Competitive &amp; Financial Analysis — Procter &amp; Gamble</h3>
-      <p class="project-desc">Benchmarked 3 P&amp;G business segments against 5 global competitors. Analyzed market dynamics, customer behavior, and financial performance. Delivered investment-committee-style strategic presentation with prioritized recommendations to senior stakeholders.</p>
-      <div class="project-tools">
-        <span class="tool-tag">Financial Analysis</span><span class="tool-tag">Competitive Benchmarking</span><span class="tool-tag">Market Analysis</span><span class="tool-tag">Excel</span><span class="tool-tag">PowerPoint</span>
-      </div>
-    </div>
+    <!-- 04 BOEING -->
 
     <div class="project-card fade-in">
-      <p class="project-index">08 · BBA Thesis · 2021 to 2022</p>
-      <h3 class="project-title">Brand Loyalty Research — Nike, Adidas, New Balance</h3>
-      <p class="project-desc">Applied surveys, social listening, and text mining to analyze marketing performance across three global consumer brands. Found authentic personalized content consistently outperformed traditional formats in brand recall and purchase intent.</p>
+
+      <p class="project-index">
+        04 · SDSU BA 674 · Spring 2026
+      </p>
+
+      <h3 class="project-title">
+        Cost of Capital & Investment Analysis — Boeing 7E7
+      </h3>
+
+      <p class="project-desc">
+        Applied WACC and CAPM to evaluate Boeing's 7E7 investment decision,
+        unlevering and relevering segment betas to isolate risk. Developed a
+        risk-adjusted hurdle rate, tested IRR sensitivity under multiple scenarios,
+        and delivered an investment recommendation.
+      </p>
+
       <div class="project-tools">
-        <span class="tool-tag">Survey Design</span><span class="tool-tag">Social Listening</span><span class="tool-tag">Text Mining</span><span class="tool-tag">Brand Analytics</span><span class="tool-tag">Consumer Behavior</span>
+        <span class="tool-tag">WACC</span>
+        <span class="tool-tag">CAPM</span>
+        <span class="tool-tag">Asset Beta</span>
+        <span class="tool-tag">IRR</span>
+        <span class="tool-tag">Sensitivity Analysis</span>
+        <span class="tool-tag">Excel</span>
       </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/file/d/1ws26M9w5TBQuvjVfn74YJi9Yp5Z6t6Ee/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Financial Analysis
+        </a>
+      </div>
+
+    </div>
+
+    <!-- 05 BA 649 -->
+
+    <div class="project-card fade-in">
+
+      <p class="project-index">
+        05 · SDSU BA 649 · Spring 2025
+      </p>
+
+      <h3 class="project-title">
+        Predictive Analytics & Personalized Recommendation Models
+      </h3>
+
+      <p class="project-desc">
+        Analyzed a 1,000+ observation dataset using exploratory analysis,
+        regression and statistical classification. Built and compared Best Subset,
+        Ridge, Lasso, KNN, and LDA models, achieving 88%+ predictive accuracy
+        in the classification workflow.
+      </p>
+
+      <div class="project-tools">
+        <span class="tool-tag">R</span>
+        <span class="tool-tag">Regression</span>
+        <span class="tool-tag">Ridge</span>
+        <span class="tool-tag">Lasso</span>
+        <span class="tool-tag">KNN</span>
+        <span class="tool-tag">LDA</span>
+        <span class="tool-tag">EDA</span>
+      </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/drive/folders/1eJenhv_uZTRE6w0G5ofGMkqTN0F2IJ__?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Analytics Project
+        </a>
+      </div>
+
+    </div>
+
+    <!-- 06 BA 640 -->
+
+    <div class="project-card fade-in">
+
+      <p class="project-index">
+        06 · SDSU BA 640 · Spring 2025
+      </p>
+
+      <h3 class="project-title">
+        Competitive & Financial Analysis — Procter & Gamble
+      </h3>
+
+      <p class="project-desc">
+        Benchmarked three P&G business segments against five global competitors,
+        analyzing market dynamics, customer behavior, strategic positioning,
+        and financial performance. Synthesized findings into an
+        investment-committee-style strategic presentation.
+      </p>
+
+      <div class="project-tools">
+        <span class="tool-tag">Financial Analysis</span>
+        <span class="tool-tag">Competitive Benchmarking</span>
+        <span class="tool-tag">Market Analysis</span>
+        <span class="tool-tag">Strategy</span>
+        <span class="tool-tag">Excel</span>
+        <span class="tool-tag">PowerPoint</span>
+      </div>
+
+      <div class="project-links">
+        <a
+          href="https://drive.google.com/drive/folders/1RBre2L-RoLQE-L6bP4QCWzFd--v_MEcL?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link">
+          View Competitive Analysis
+        </a>
+      </div>
+
     </div>
 
   </div>
+
+  <!-- ADDITIONAL PROJECTS -->
+
+  <p class="additional-heading">
+    Additional Analyses
+  </p>
+
+  <div class="additional-grid">
+
+    <!-- DIAMOND CHEMICALS -->
+
+    <div class="additional-card fade-in">
+
+      <p class="additional-meta">
+        SDSU BA 674 · Spring 2026
+      </p>
+
+      <h3 class="additional-title">
+        Capital Budgeting & DCF Analysis — Diamond Chemicals
+      </h3>
+
+      <p class="additional-desc">
+        Evaluated a plant modernization investment through NPV, IRR,
+        payback-period, opportunity-cost, cannibalization, inflation,
+        and capital-allocation analysis.
+      </p>
+
+      <a
+        href="https://drive.google.com/file/d/12DvVu-OxgVz2OIuGg4zIw9HHzTJLwnF3/view?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-link">
+        View DCF Analysis
+      </a>
+
+    </div>
+
+    <!-- BA 670 -->
+
+    <div class="additional-card fade-in">
+
+      <p class="additional-meta">
+        SDSU BA 670 · Spring 2026
+      </p>
+
+      <h3 class="additional-title">
+        Accounting, Cost Analysis & Financial Modeling
+      </h3>
+
+      <p class="additional-desc">
+        Developed accounting and decision-support analyses spanning budgeting,
+        cost allocation, profitability, financial statements, and Excel-based
+        managerial decision models.
+      </p>
+
+      <a
+        href="https://drive.google.com/drive/folders/1aBIfTTABnx7Ni0NuT9Z2-sQaL-B-NVIj?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-link">
+        View Financial Models
+      </a>
+
+    </div>
+
+    <!-- BA 644 -->
+
+    <div class="additional-card fade-in">
+
+      <p class="additional-meta">
+        SDSU BA 644 · Fall 2024
+      </p>
+
+      <h3 class="additional-title">
+        Operations Strategy & Global Supply Chain Analysis
+      </h3>
+
+      <p class="additional-desc">
+        Analyzed operating and supply-chain strategies across major global
+        companies using competitive, operational, and strategic frameworks.
+      </p>
+
+      <a
+        href="https://drive.google.com/file/d/1qPkgQfQVFVMTv4UHn8WhdNz37_N5PrEK/view?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-link">
+        View Strategy Analysis
+      </a>
+
+    </div>
+
+    <!-- BBA THESIS -->
+
+    <div class="additional-card fade-in">
+
+      <p class="additional-meta">
+        Navrachana University · BBA Thesis · 2021–2022
+      </p>
+
+      <h3 class="additional-title">
+        Brand Loyalty Research — Nike, Adidas & New Balance
+      </h3>
+
+      <p class="additional-desc">
+        Used survey research, social listening, and text analysis to examine
+        consumer engagement, purchase intent, brand perception, and the
+        relationship between personalized content and loyalty.
+      </p>
+
+      <a
+        href="https://drive.google.com/file/d/1Zp2b7H50X3E8n6co8W5Ka1eK3Q0d9nn1/view?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-link">
+        View Research
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- CERT STRIP -->
+<!-- CERTIFICATION STRIP -->
+
 <div class="cert-strip">
+
   <div class="cert-inner">
-    <span class="cert-label">Certified →</span>
-    <span class="cert-badge">Product Management &amp; PLG — Pendo</span>
-    <span class="cert-badge">Product Experimentation — Product School</span>
-    <span class="cert-badge">AI for Product &amp; Leadership — Product School</span>
-    <span class="cert-badge">Predictive Project Management — PMI</span>
-    <span class="cert-badge">Marketer of the Year 2022</span>
+
+    <span class="cert-label">
+      Certified →
+    </span>
+
+    <span class="cert-badge">
+      Product Management & PLG — Pendo
+    </span>
+
+    <span class="cert-badge">
+      Product Experimentation — Product School
+    </span>
+
+    <span class="cert-badge">
+      AI for Product & Leadership — Product School
+    </span>
+
+    <span class="cert-badge">
+      Predictive Project Management — PMI
+    </span>
+
   </div>
+
 </div>
 
 <!-- SKILLS -->
+
 <section id="skills">
-  <p class="section-label">Skills</p>
-  <h2 class="section-title">What I actually know how to use.</h2>
+
+  <p class="section-label">
+    Skills
+  </p>
+
+  <h2 class="section-title">
+    What I actually know how to use.
+  </h2>
+
   <div class="skills-grid">
+
+    <!-- ANALYTICS -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">Analytics &amp; Data Science</p>
+
+      <p class="skill-group-title">
+        Analytics & Data Science
+      </p>
+
       <ul class="skill-list">
-        <li>SQL — joins, subqueries, CTEs, case</li>
+        <li>SQL — joins, subqueries, CTEs</li>
         <li>Python — Pandas, NumPy, Matplotlib</li>
-        <li>R &amp; R Studio</li>
-        <li>Regression Modeling (Ridge, Lasso)</li>
-        <li>Classification — KNN, LDA</li>
-        <li>EDA &amp; Feature Engineering</li>
-        <li>Trend &amp; Variance Analysis</li>
+        <li>R & RStudio</li>
+        <li>Regression Modeling</li>
+        <li>Statistical Classification</li>
+        <li>EDA & Feature Engineering</li>
+        <li>Trend & Variance Analysis</li>
       </ul>
+
     </div>
+
+    <!-- FINANCE -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">Finance &amp; Accounting</p>
+
+      <p class="skill-group-title">
+        Finance & Decision Analysis
+      </p>
+
       <ul class="skill-list">
-        <li>WACC &amp; CAPM</li>
-        <li>DCF &amp; NPV Analysis</li>
-        <li>IRR &amp; Payback Period</li>
+        <li>WACC & CAPM</li>
+        <li>DCF & NPV Analysis</li>
+        <li>IRR & Sensitivity Analysis</li>
         <li>Capital Budgeting</li>
-        <li>Master Budgeting &amp; Pro Forma Statements</li>
-        <li>Budget-to-Actual Variance</li>
-        <li>Invoice &amp; PO Reconciliation</li>
+        <li>Cost & Profitability Analysis</li>
+        <li>Financial Statement Analysis</li>
+        <li>Excel Financial Modeling</li>
       </ul>
+
     </div>
+
+    <!-- BI -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">BI &amp; Visualization</p>
+
+      <p class="skill-group-title">
+        BI & Data Platforms
+      </p>
+
       <ul class="skill-list">
-        <li>Power BI — dashboards &amp; automation</li>
+        <li>Power BI</li>
         <li>Tableau</li>
-        <li>AWS RDS &amp; MySQL</li>
-        <li>Google Analytics</li>
-        <li>Excel — macros, pivot tables, VLOOKUP</li>
-        <li>KPI Reporting &amp; Executive Dashboards</li>
+        <li>Advanced Excel</li>
+        <li>AWS RDS</li>
+        <li>MySQL</li>
+        <li>KPI Dashboards</li>
+        <li>Executive Reporting</li>
       </ul>
+
     </div>
+
+    <!-- OPERATIONS -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">Operations &amp; Systems</p>
+
+      <p class="skill-group-title">
+        Business Analysis & Operations
+      </p>
+
       <ul class="skill-list">
-        <li>ERP · MRP · MES Systems</li>
-        <li>ISO 9001:2015 Compliance</li>
-        <li>Process Mapping (As-Is / To-Be)</li>
-        <li>Requirements Gathering</li>
-        <li>UAT &amp; Defect Tracking</li>
+        <li>Requirements Analysis</li>
+        <li>Process Mapping — As-Is / To-Be</li>
+        <li>Root Cause Analysis</li>
+        <li>UAT & Validation</li>
+        <li>ERP · MRP · MES</li>
         <li>SOP Development</li>
-        <li>Process Improvement</li>
+        <li>Continuous Improvement</li>
       </ul>
+
     </div>
+
+    <!-- PRODUCT -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">Marketing &amp; Advertising</p>
+
+      <p class="skill-group-title">
+        Product & Market Strategy
+      </p>
+
       <ul class="skill-list">
-        <li>A/B Testing &amp; Experimentation</li>
-        <li>Facebook Ads &amp; Email Marketing</li>
+        <li>Market Research</li>
+        <li>Competitive Analysis</li>
+        <li>Segmentation & Positioning</li>
+        <li>Product Strategy</li>
+        <li>Go-to-Market Strategy</li>
+        <li>A/B Testing</li>
         <li>Campaign Performance Analytics</li>
-        <li>Business Development Outreach</li>
-        <li>User Acquisition &amp; Segmentation</li>
-        <li>CTR &amp; Conversion Optimization</li>
       </ul>
+
     </div>
+
+    <!-- TOOLS -->
+
     <div class="skill-group fade-in">
-      <p class="skill-group-title">Tools &amp; Platforms</p>
+
+      <p class="skill-group-title">
+        Tools & Collaboration
+      </p>
+
       <ul class="skill-list">
-        <li>Jira &amp; Agile/Scrum</li>
-        <li>SharePoint &amp; Notion</li>
-        <li>Claude &amp; ChatGPT — daily use</li>
-        <li>AI-Assisted Analytical Workflows</li>
+        <li>Jira & Agile/Scrum</li>
+        <li>SharePoint</li>
+        <li>Microsoft 365</li>
         <li>Google Workspace</li>
-        <li>Microsoft Office Suite</li>
+        <li>Claude & ChatGPT</li>
+        <li>AI-Assisted Analytical Workflows</li>
+        <li>Cross-Functional Collaboration</li>
       </ul>
+
     </div>
+
   </div>
+
 </section>
 
 <!-- CONTACT -->
+
 <section class="contact-section" id="contact">
-  <p class="section-label" style="justify-content: center;">Contact</p>
-  <h2 class="contact-title">Open to the<br><span>right opportunity.</span></h2>
- <p class="contact-sub">
-  MBA Candidate in Information Systems · Graduating December 2026<br>
-  Seeking full-time opportunities beginning after graduation<br>
-  <span class="contact-sub-secondary">San Diego, CA · Open to California & Remote</span><br>
-  <span class="contact-sub-tertiary">Eligible for up to 36 months of OPT/STEM OPT work authorization</span>
-</p>
- <div class="contact-links">
-    <a href="mailto:guptariya471@gmail.com" class="contact-link">guptariya471@gmail.com</a>
-    <a href="https://linkedin.com/in/riyaguptx" target="_blank" class="contact-link">linkedin.com/in/riyaguptx</a>
-    <a href="tel:6196758598" class="contact-link">(619) 675-8598</a>
+
+  <p
+    class="section-label"
+    style="justify-content: center;">
+    Contact
+  </p>
+
+  <h2 class="contact-title">
+    Open to the<br>
+    <span>right opportunity.</span>
+  </h2>
+
+  <p class="contact-sub">
+
+    MBA Candidate in Information Systems · Graduating December 2026
+
+    <br>
+
+    Seeking full-time opportunities beginning after graduation
+
+    <br>
+
+    <span class="contact-sub-secondary">
+      San Diego, CA · Open to California & Remote
+    </span>
+
+    <br>
+
+    <span class="contact-sub-tertiary">
+      Eligible for up to 36 months of OPT/STEM OPT work authorization
+    </span>
+
+  </p>
+
+  <div class="contact-links">
+
+    <a
+      href="mailto:guptariya471@gmail.com"
+      class="contact-link">
+      guptariya471@gmail.com
+    </a>
+
+    <a
+      href="https://linkedin.com/in/riyaguptx"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-link">
+      linkedin.com/in/riyaguptx
+    </a>
+
+    <a
+      href="tel:6196758598"
+      class="contact-link">
+      (619) 675-8598
+    </a>
+
   </div>
+
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Riya Gupta — San Diego, CA</p>
-  <p class="status">available for opportunities</p>
+
+  <p>
+    © 2026 Riya Gupta — San Diego, CA
+  </p>
+
+  <p class="status">
+    available for opportunities
+  </p>
+
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+
     });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  },
+  {
+    threshold: 0.08
+  }
+);
+
+document
+  .querySelectorAll('.fade-in')
+  .forEach((el) => observer.observe(el));
+
 </script>
+
 </body>
 </html>
